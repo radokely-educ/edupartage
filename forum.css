@@ -1,0 +1,455 @@
+/* ============================================================
+   forum.css — styles de la page forum
+   ============================================================ */
+
+/* ---------- EN-TÊTE ---------- */
+.forum-hero {
+  background: linear-gradient(160deg, var(--green-pale) 0%, var(--warm-cream) 70%);
+  border-bottom: 1px solid var(--green-light);
+  padding: 52px 0 32px;
+}
+
+.forum-hero-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.forum-title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.5vw, 46px);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 12px 0 8px;
+}
+
+.forum-desc {
+  font-size: 16px;
+  color: var(--text-mid);
+  max-width: 500px;
+  line-height: 1.65;
+}
+
+/* ---------- LAYOUT ---------- */
+.forum-body {
+  padding: 40px 0 80px;
+  background: var(--warm-cream);
+}
+
+.forum-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ---------- SIDEBAR ---------- */
+.forum-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 90px;
+}
+
+.fsb-card {
+  background: var(--white);
+  border: 1px solid var(--warm-sand);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.fsb-card h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+}
+
+/* Catégories */
+.cat-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+
+.cat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition);
+  font-size: 14px;
+  color: var(--text-mid);
+}
+.cat-item:hover   { background: var(--green-pale); color: var(--green-dark); }
+.cat-item.active  { background: var(--green-light); color: var(--green-dark); font-weight: 600; }
+.cat-icon  { font-size: 16px; flex-shrink: 0; }
+.cat-label { flex: 1; }
+.cat-count {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--warm-sand);
+  color: var(--text-mid);
+  padding: 2px 7px;
+  border-radius: 50px;
+}
+.cat-item.active .cat-count {
+  background: var(--green-main);
+  color: #fff;
+}
+
+/* Membres actifs */
+.members-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.members-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+.members-list small {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+.res-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* CTA sidebar */
+.fsb-cta {
+  text-align: center;
+  background: var(--green-pale);
+  border-color: var(--green-light);
+}
+.fsb-cta .sc-icon { font-size: 28px; margin-bottom: 8px; }
+.fsb-cta p { font-size: 13px; color: var(--text-mid); line-height: 1.55; margin-bottom: 12px; }
+
+/* ---------- BARRE D'OUTILS ---------- */
+.forum-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.forum-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1.5px solid var(--warm-sand);
+  border-radius: 50px;
+  padding: 8px 18px;
+  flex: 1;
+  max-width: 360px;
+  transition: border-color var(--transition);
+}
+.forum-search:focus-within { border-color: var(--green-main); }
+.forum-search input {
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-dark);
+  background: transparent;
+  width: 100%;
+}
+.forum-search input::placeholder { color: var(--text-light); }
+
+.forum-sort {
+  display: flex;
+  gap: 4px;
+  background: var(--white);
+  border: 1px solid var(--warm-sand);
+  border-radius: 50px;
+  padding: 4px;
+}
+.sort-tab {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid);
+  background: none;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.sort-tab:hover { color: var(--green-dark); }
+.sort-tab.active {
+  background: var(--green-main);
+  color: #fff;
+}
+
+/* ---------- LISTE DES DISCUSSIONS ---------- */
+.discussions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.discussion-card {
+  display: grid;
+  grid-template-columns: 44px 1fr 64px;
+  gap: 16px;
+  align-items: start;
+  background: var(--white);
+  border: 1px solid var(--warm-sand);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: all var(--transition);
+  position: relative;
+}
+.discussion-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 3px 0 0 3px;
+  background: var(--green-main);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.discussion-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--green-light);
+  transform: translateY(-1px);
+}
+.discussion-card:hover::before { opacity: 1; }
+
+.disc-left { padding-top: 2px; }
+
+.disc-body { display: flex; flex-direction: column; gap: 8px; }
+
+.disc-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Badges catégorie */
+.disc-cat {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+  letter-spacing: 0.03em;
+}
+.cat-svt       { background: #d4edda; color: #1a5e2a; }
+.cat-maths     { background: #d0e8ff; color: #0d3a6e; }
+.cat-francais  { background: #ffe8cc; color: #7a3d00; }
+.cat-histoire  { background: #e8d4ff; color: #4a1a8e; }
+.cat-pedagogie { background: #fff3cd; color: #856404; }
+.cat-gestion   { background: #ffd6d6; color: #7a1a1a; }
+
+.disc-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+.disc-badge.new     { background: var(--green-main); color: #fff; }
+.disc-badge.epingle { background: var(--warm-sand); color: var(--warm-brown); }
+
+.disc-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.disc-title a {
+  color: var(--text-dark);
+  transition: color var(--transition);
+}
+.disc-title a:hover { color: var(--green-main); }
+
+.disc-excerpt {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.disc-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.disc-right {
+  text-align: center;
+  padding-top: 4px;
+}
+.disc-replies {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-main);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.disc-right small {
+  font-size: 10px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- MODAL ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(20px);
+  transition: transform 0.25s ease;
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--warm-sand);
+}
+.modal-header h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all var(--transition);
+}
+.modal-close:hover { background: var(--warm-sand); color: var(--text-dark); }
+
+.modal-body { padding: 32px 24px; }
+
+.modal-lock { text-align: center; }
+.modal-lock h4 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 12px 0 8px;
+}
+.modal-lock p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+/* ---------- PAGINATION & EMPTY ---------- */
+.empty-state {
+  text-align: center;
+  padding: 64px 24px;
+  background: var(--white);
+  border: 1px solid var(--warm-sand);
+  border-radius: var(--radius-md);
+}
+.empty-icon { font-size: 48px; margin-bottom: 16px; }
+.empty-state h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.empty-state p { font-size: 15px; color: var(--text-mid); }
+
+.link-btn {
+  background: none; border: none;
+  color: var(--green-main); font-family: var(--font-body);
+  font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: underline;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+.page-btn {
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--warm-sand);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 600;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.page-btn:hover { border-color: var(--green-main); color: var(--green-main); }
+.page-btn.active { background: var(--green-main); border-color: var(--green-main); color: #fff; }
+
+/* ---------- LIEN ACTIF NAVBAR ---------- */
+.nav-active { color: var(--green-dark) !important; }
+.nav-active::after { width: 100% !important; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 860px) {
+  .forum-layout { grid-template-columns: 1fr; }
+  .forum-sidebar { position: static; }
+  .fsb-cta { display: none; }
+}
+
+@media (max-width: 600px) {
+  .forum-hero-inner { flex-direction: column; align-items: flex-start; }
+  .forum-toolbar { flex-direction: column; align-items: stretch; }
+  .forum-search { max-width: 100%; }
+  .discussion-card { grid-template-columns: 36px 1fr; }
+  .disc-right { display: none; }
+}

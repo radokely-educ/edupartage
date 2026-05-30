@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPartage — Plateforme des Enseignants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">EduPartage</span>
+      </a>
+      <nav class="nav-links">
+        <a href="bibliotheque.html">Bibliothèque</a>
+        <a href="forum.html">Forum</a>
+        <a href="apropos.html">À propos</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="connexion.html" class="btn btn-ghost">Connexion</a>
+        <a href="inscription.html" class="btn btn-primary">Rejoindre</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="bibliotheque.html">Bibliothèque</a>
+      <a href="forum.html">Forum</a>
+      <a href="apropos.html">À propos</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="inscription.html" class="btn btn-primary">Rejoindre</a>
+    </div>
+  </header>
+
+  <!-- HERO avec image de fond école -->
+  <section class="hero">
+    <div class="hero-img-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="hero-badge">Pour les enseignants, par les enseignants</span>
+      <h1 class="hero-title">
+        Partageons <em>nos expériences,</em><br>
+        grandissons ensemble.
+      </h1>
+      <p class="hero-desc">
+        Une plateforme dédiée aux enseignants pour échanger des ressources pédagogiques,
+        partager des expériences de terrain et construire une communauté soudée.
+      </p>
+      <div class="hero-cta">
+        <a href="inscription.html" class="btn btn-primary btn-large">Rejoindre la communauté</a>
+        <a href="bibliotheque.html" class="btn btn-white-outline btn-large">Voir les ressources</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>120+</strong>
+          <span>Enseignants</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong>350+</strong>
+          <span>Ressources</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong>15+</strong>
+          <span>Matières</span>
+        </div>
+      </div>
+    </div>
+    <!-- Cartes flottantes -->
+    <div class="hero-cards">
+      <a href="ressource.html" class="hero-card-float card-1">
+        <span class="card-icon">📄</span>
+        <div>
+          <strong>Nouveau cours SVT – 6e</strong>
+          <small>Partagé il y a 2h</small>
+        </div>
+      </a>
+      <a href="forum.html" class="hero-card-float card-2">
+        <span class="card-icon">💬</span>
+        <div>
+          <strong>Discussion : gestion de classe</strong>
+          <small>12 réponses</small>
+        </div>
+      </a>
+      <a href="ressource.html" class="hero-card-float card-3">
+        <span class="card-icon">⭐</span>
+        <div>
+          <strong>Sujet d'examen validé</strong>
+          <small>Très apprécié</small>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Ce que tu trouves ici</span>
+        <h2 class="section-title">Tout ce dont un enseignant a besoin</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Bibliothèque de ressources</h3>
+          <p>Fiches de cours, sujets d'examens, corrections, exercices — triés par matière et niveau.</p>
+          <a href="bibliotheque.html" class="feature-link">Explorer →</a>
+        </div>
+        <div class="feature-card feature-card--accent">
+          <div class="feature-icon">🤝</div>
+          <h3>Forum d'échange</h3>
+          <p>Partage tes expériences de classe, pose des questions, aide tes collègues. Ensemble on va plus loin.</p>
+          <a href="forum.html" class="feature-link">Participer →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⬆️</div>
+          <h3>Contribuer facilement</h3>
+          <p>Dépose tes documents en quelques clics. Chaque contribution enrichit toute la communauté.</p>
+          <a href="inscription.html" class="feature-link">Contribuer →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Recherche rapide</h3>
+          <p>Filtre par matière, niveau scolaire, type de document. Trouve ce qu'il te faut en secondes.</p>
+          <a href="bibliotheque.html" class="feature-link">Chercher →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESSOURCES RÉCENTES -->
+  <section class="recent">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Derniers ajouts</span>
+        <h2 class="section-title">Ressources récentes</h2>
+        <a href="bibliotheque.html" class="section-link">Voir tout →</a>
+      </div>
+      <div class="resources-grid">
+        <article class="resource-card" onclick="window.location='ressource.html'" style="cursor:pointer">
+          <div class="resource-top">
+            <span class="resource-badge badge-svt">SVT</span>
+            <span class="resource-level">6e</span>
+          </div>
+          <h4>La combustion — fiche de cours complète</h4>
+          <p>Définition, types de combustion, dangers et impact environnemental.</p>
+          <div class="resource-meta">
+            <span>📖 Lecture en ligne</span>
+            <span>👤 Rado</span>
+            <span>👁 142 vues</span>
+          </div>
+        </article>
+        <article class="resource-card" onclick="window.location='ressource.html'" style="cursor:pointer">
+          <div class="resource-top">
+            <span class="resource-badge badge-math">Maths</span>
+            <span class="resource-level">5e</span>
+          </div>
+          <h4>Sujet d'examen — géométrie avec correction</h4>
+          <p>Exercices sur les triangles, cercles et calculs d'aires. Corrigé inclus.</p>
+          <div class="resource-meta">
+            <span>📖 Lecture en ligne</span>
+            <span>👤 Marie T.</span>
+            <span>👁 98 vues</span>
+          </div>
+        </article>
+        <article class="resource-card" onclick="window.location='ressource.html'" style="cursor:pointer">
+          <div class="resource-top">
+            <span class="resource-badge badge-fr">Français</span>
+            <span class="resource-level">4e</span>
+          </div>
+          <h4>Séquence sur la narration — 6 séances</h4>
+          <p>Plan de séquence complet avec activités, objectifs et évaluation finale.</p>
+          <div class="resource-meta">
+            <span>📖 Lecture en ligne</span>
+            <span>👤 Paul M.</span>
+            <span>👁 115 vues</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPEL À L'ACTION -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-leaves">
+          <div class="cta-leaf cta-leaf-1"></div>
+          <div class="cta-leaf cta-leaf-2"></div>
+        </div>
+        <h2>Prêt à rejoindre la communauté ?</h2>
+        <p>L'inscription est gratuite. Partage tes ressources, apprends des autres, grandis ensemble.</p>
+        <a href="inscription.html" class="btn btn-white btn-large">Créer mon compte gratuitement</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">✦</span>
+          <span class="logo-text">EduPartage</span>
+        </a>
+        <p>Plateforme d'échange entre enseignants.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <strong>Navigation</strong>
+          <a href="bibliotheque.html">Bibliothèque</a>
+          <a href="forum.html">Forum</a>
+          <a href="apropos.html">À propos</a>
+        </div>
+        <div class="footer-col">
+          <strong>Compte</strong>
+          <a href="connexion.html">Connexion</a>
+          <a href="inscription.html">Inscription</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 EduPartage — Fait avec ❤️ pour les enseignants</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

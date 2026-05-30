@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Déposer une ressource — EduPartage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="deposer.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo"><span class="logo-icon">✦</span><span class="logo-text">EduPartage</span></a>
+      <nav class="nav-links">
+        <a href="bibliotheque.html">Bibliothèque</a>
+        <a href="forum.html">Forum</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="connexion.html" class="btn btn-ghost">Connexion</a>
+        <a href="inscription.html" class="btn btn-primary">Rejoindre</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="bibliotheque.html">Bibliothèque</a>
+      <a href="forum.html">Forum</a>
+      <a href="connexion.html">Connexion</a>
+    </div>
+  </header>
+
+  <div class="dep-page container">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>
+      <a href="bibliotheque.html">Bibliothèque</a><span>›</span>
+      <span>Déposer une ressource</span>
+    </nav>
+
+    <div class="dep-layout">
+
+      <main class="dep-main">
+        <div class="dep-header">
+          <h1>Déposer une ressource</h1>
+          <p>Ta ressource sera examinée par l'administrateur avant d'être publiée. Merci de bien remplir tous les champs.</p>
+        </div>
+
+        <!-- MUR DE CONNEXION si non connecté -->
+        <div class="dep-lock">
+          <div class="lock-box">
+            <div class="paywall-icon">🔒</div>
+            <h3>Connecte-toi pour contribuer</h3>
+            <p>Seuls les membres inscrits peuvent déposer des ressources sur EduPartage.</p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;max-width:300px;margin-left:auto;margin-right:auto">
+              <a href="connexion.html" class="btn btn-primary btn-large" style="justify-content:center">Se connecter</a>
+              <a href="inscription.html" class="btn btn-outline btn-large" style="justify-content:center">Créer un compte gratuit</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMULAIRE (visible une fois connecté) -->
+        <form class="dep-form auth-form" id="deposerForm" novalidate style="display:none">
+
+          <div class="form-group">
+            <label for="titre">Titre de la ressource <span class="req">*</span></label>
+            <input type="text" id="titre" placeholder="ex: Fiche de cours — La combustion (6e)">
+            <span class="form-error" id="err-titre"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description <span class="req">*</span></label>
+            <textarea id="description" rows="3" placeholder="Décris brièvement le contenu, les objectifs et le niveau visé…" style="width:100%;font-family:var(--font-body);font-size:14px;color:var(--text-dark);border:1.5px solid var(--warm-sand);border-radius:var(--radius-sm);padding:11px 14px;outline:none;resize:vertical;transition:border-color var(--transition);"></textarea>
+            <span class="form-error" id="err-description"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dep-matiere">Matière <span class="req">*</span></label>
+              <select id="dep-matiere">
+                <option value="">— Choisir —</option>
+                <option value="svt">SVT</option>
+                <option value="maths">Mathématiques</option>
+                <option value="francais">Français</option>
+                <option value="histoire">Histoire-Géo</option>
+                <option value="physique">Physique-Chimie</option>
+                <option value="anglais">Anglais</option>
+                <option value="autre">Autre</option>
+              </select>
+              <span class="form-error" id="err-dep-matiere"></span>
+            </div>
+            <div class="form-group">
+              <label for="dep-niveau">Niveau <span class="req">*</span></label>
+              <select id="dep-niveau">
+                <option value="">— Choisir —</option>
+                <option value="6e">6e</option>
+                <option value="5e">5e</option>
+                <option value="4e">4e</option>
+                <option value="3e">3e</option>
+                <option value="multi">Plusieurs niveaux</option>
+              </select>
+              <span class="form-error" id="err-dep-niveau"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dep-type">Type de document <span class="req">*</span></label>
+              <select id="dep-type">
+                <option value="">— Choisir —</option>
+                <option value="cours">Fiche de cours</option>
+                <option value="examen">Sujet d'examen</option>
+                <option value="correction">Correction</option>
+                <option value="exercice">Exercice</option>
+                <option value="sequence">Séquence de cours</option>
+              </select>
+              <span class="form-error" id="err-dep-type"></span>
+            </div>
+            <div class="form-group">
+              <label for="dep-tags">Mots-clés</label>
+              <input type="text" id="dep-tags" placeholder="ex: combustion, énergie, 6e">
+              <small style="font-size:11px;color:var(--text-light)">Séparés par des virgules</small>
+            </div>
+          </div>
+
+          <!-- ZONE D'UPLOAD -->
+          <div class="form-group">
+            <label>Fichier <span class="req">*</span></label>
+            <div class="upload-zone" id="uploadZone">
+              <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.png" style="display:none">
+              <div class="upload-icon">📁</div>
+              <p class="upload-text">Glisse ton fichier ici ou <button type="button" class="link-btn" onclick="document.getElementById('fileInput').click()">parcourir</button></p>
+              <small>PDF, Word, Image — max 10 Mo</small>
+              <div class="file-preview" id="filePreview" style="display:none"></div>
+            </div>
+            <span class="form-error" id="err-file"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="apercu">Aperçu public (ce que les visiteurs voient sans connexion) <span class="req">*</span></label>
+            <textarea id="apercu" rows="4" placeholder="Colle ici l'introduction ou la première partie de ta ressource. C'est ce que les visiteurs non connectés verront avant le mur." style="width:100%;font-family:var(--font-body);font-size:14px;color:var(--text-dark);border:1.5px solid var(--warm-sand);border-radius:var(--radius-sm);padding:11px 14px;outline:none;resize:vertical;"></textarea>
+            <span class="form-error" id="err-apercu"></span>
+          </div>
+
+          <label class="form-checkbox">
+            <input type="checkbox" id="confirm-original">
+            <span>Je certifie que cette ressource est mon propre travail ou que j'ai le droit de la partager.</span>
+          </label>
+          <span class="form-error" id="err-confirm"></span>
+
+          <button type="submit" class="btn btn-primary btn-large btn-full">
+            📤 Soumettre la ressource
+          </button>
+
+        </form>
+
+        <div class="auth-success" id="depSuccessMsg" style="display:none">
+          <div class="success-icon">📬</div>
+          <h3>Ressource soumise avec succès !</h3>
+          <p>Ta ressource est en attente de validation par l'administrateur. Elle sera publiée dans les 24h si elle respecte les critères de qualité.</p>
+          <a href="bibliotheque.html" class="btn btn-primary" style="margin-top:16px">Retour à la bibliothèque</a>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="dep-sidebar">
+        <div class="dsb-card" style="background:var(--white);border:1px solid var(--warm-sand);border-radius:var(--radius-md);padding:20px">
+          <h4 style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text-dark);margin-bottom:14px">Conseils pour une bonne ressource</h4>
+          <ul class="dep-tips">
+            <li>✅ Titre clair et descriptif</li>
+            <li>✅ Niveau et matière bien indiqués</li>
+            <li>✅ Description complète du contenu</li>
+            <li>✅ Contenu original ou autorisé</li>
+            <li>✅ Orthographe vérifiée</li>
+            <li>❌ Pas de contenu copié sans source</li>
+            <li>❌ Pas de fichiers trop lourds (+10Mo)</li>
+          </ul>
+        </div>
+
+        <div class="dsb-card" style="background:var(--green-pale);border:1px solid var(--green-light);border-radius:var(--radius-md);padding:20px;text-align:center">
+          <div style="font-size:28px;margin-bottom:8px">⏱</div>
+          <h4 style="font-family:var(--font-display);font-size:14px;font-weight:600;margin-bottom:6px">Délai de validation</h4>
+          <p style="font-size:13px;color:var(--text-mid);line-height:1.55">Les ressources sont examinées par l'administrateur sous <strong>24 à 48h</strong>.</p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-icon">✦</span><span class="logo-text">EduPartage</span></a>
+        <p>Plateforme d'échange entre enseignants.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><strong>Navigation</strong><a href="bibliotheque.html">Bibliothèque</a><a href="forum.html">Forum</a></div>
+        <div class="footer-col"><strong>Compte</strong><a href="connexion.html">Connexion</a><a href="inscription.html">Inscription</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><div class="container"><p>© 2025 EduPartage — Fait avec ❤️ pour les enseignants</p></div></div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="deposer.js"></script>
+</body>
+</html>
