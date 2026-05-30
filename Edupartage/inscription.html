@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription — EduPartage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-body">
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">EduPartage</span>
+      </a>
+      <nav class="nav-links">
+        <a href="bibliotheque.html">Bibliothèque</a>
+        <a href="forum.html">Forum</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="connexion.html" class="btn btn-ghost">Connexion</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-layout">
+
+    <div class="auth-left">
+      <div class="auth-left-img"></div>
+      <div class="auth-left-overlay"></div>
+      <div class="auth-left-content">
+        <div class="auth-left-logo">
+          <span class="logo-icon">✦</span>
+          <span class="logo-text" style="color:#fff">EduPartage</span>
+        </div>
+        <h2>Rejoins une communauté d'enseignants passionnés</h2>
+        <ul class="auth-benefits">
+          <li>✓ Accès complet à toutes les ressources</li>
+          <li>✓ Participe aux discussions du forum</li>
+          <li>✓ Partage tes propres cours et examens</li>
+          <li>✓ Entièrement gratuit, sans publicité</li>
+        </ul>
+        <div class="auth-testimonial">
+          <div class="test-avatar">R</div>
+          <div>
+            <p>"Cette plateforme m'a fait gagner des heures de préparation chaque semaine."</p>
+            <strong>Rado — Enseignant SVT, Maintirano</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <div class="auth-form-wrap">
+
+        <div class="auth-form-header">
+          <h1>Créer un compte</h1>
+          <p>Déjà inscrit ? <a href="connexion.html">Se connecter</a></p>
+        </div>
+
+        <form class="auth-form" id="inscriptionForm" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom <span class="req">*</span></label>
+              <input type="text" id="prenom" placeholder="Ton prénom">
+              <span class="form-error" id="err-prenom"></span>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom <span class="req">*</span></label>
+              <input type="text" id="nom" placeholder="Ton nom">
+              <span class="form-error" id="err-nom"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Adresse email <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="ton.email@exemple.com">
+            <span class="form-error" id="err-email"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="matiere">Matière principale <span class="req">*</span></label>
+            <select id="matiere">
+              <option value="">— Choisir une matière —</option>
+              <option value="svt">SVT (Sciences de la Vie et de la Terre)</option>
+              <option value="maths">Mathématiques</option>
+              <option value="francais">Français</option>
+              <option value="histoire">Histoire-Géographie</option>
+              <option value="physique">Physique-Chimie</option>
+              <option value="anglais">Anglais</option>
+              <option value="autre">Autre</option>
+            </select>
+            <span class="form-error" id="err-matiere"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="niveau">Niveau enseigné <span class="req">*</span></label>
+              <select id="niveau">
+                <option value="">— Niveau —</option>
+                <option value="6e">6e</option>
+                <option value="5e">5e</option>
+                <option value="4e">4e</option>
+                <option value="3e">3e</option>
+                <option value="multi">Plusieurs niveaux</option>
+              </select>
+              <span class="form-error" id="err-niveau"></span>
+            </div>
+            <div class="form-group">
+              <label for="ville">Ville / Région</label>
+              <input type="text" id="ville" placeholder="ex: Maintirano">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mot de passe <span class="req">*</span></label>
+            <div class="input-password">
+              <input type="password" id="password" placeholder="Minimum 8 caractères">
+              <button type="button" class="toggle-pw" id="togglePw1">👁</button>
+            </div>
+            <div class="password-strength">
+              <div class="pw-bar"><span id="pwBar"></span></div>
+              <small id="pwLabel"></small>
+            </div>
+            <span class="form-error" id="err-password"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="password2">Confirmer le mot de passe <span class="req">*</span></label>
+            <div class="input-password">
+              <input type="password" id="password2" placeholder="Répète ton mot de passe">
+              <button type="button" class="toggle-pw" id="togglePw2">👁</button>
+            </div>
+            <span class="form-error" id="err-password2"></span>
+          </div>
+
+          <label class="form-checkbox">
+            <input type="checkbox" id="cgu">
+            <span>J'accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a></span>
+          </label>
+          <span class="form-error" id="err-cgu"></span>
+
+          <button type="submit" class="btn btn-primary btn-large btn-full">
+            Créer mon compte gratuit
+          </button>
+
+          <p class="auth-note">Réservé aux enseignants. Tout compte sera vérifié par l'administrateur avant activation.</p>
+
+        </form>
+
+        <div class="auth-success" id="successMsg" style="display:none">
+          <div class="success-icon">✅</div>
+          <h3>Compte créé avec succès !</h3>
+          <p>Ton compte est en attente de validation par l'administrateur. Tu recevras un email dès que ton accès sera activé.</p>
+          <a href="index.html" class="btn btn-primary" style="margin-top:16px">Retour à l'accueil</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
